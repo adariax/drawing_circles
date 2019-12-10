@@ -22,10 +22,10 @@ class Widget(QWidget):
 
     def draw(self, mod):
         qp = mod
-        pen = QPen(QColor(255, 255, 0, 4))
+        pen = QPen(QColor(255, 255, 0), 5)
         qp.setPen(pen)
         hw = randint(10, 100)
-        qp.drawEllipse(0, 0, hw, hw)
+        qp.drawEllipse(150 - hw // 2, 200 - hw // 2, hw, hw)
 
     def run(self):
         self.flag = True
