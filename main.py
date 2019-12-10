@@ -1,14 +1,16 @@
 import sys
 from random import randint
-from PyQt5 import uic
 from PyQt5.QtGui import QPainter, QPen, QColor
 from PyQt5.QtWidgets import QApplication, QWidget
 
+from Ui import Ui_Form
 
-class Widget(QWidget):
+
+class Widget(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('Ui.ui', self)
+        self.setupUi(self)
+
         self.btn.clicked.connect(self.run)
 
         self.flag = False
@@ -22,7 +24,7 @@ class Widget(QWidget):
 
     def draw(self, mod):
         qp = mod
-        pen = QPen(QColor(255, 255, 0), 5)
+        pen = QPen(QColor(randint(0, 255), randint(0, 255), randint(0, 255)), 5)
         qp.setPen(pen)
         hw = randint(10, 100)
         qp.drawEllipse(150 - hw // 2, 200 - hw // 2, hw, hw)
